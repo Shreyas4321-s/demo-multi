@@ -57,5 +57,8 @@ environment {
        				always {
         	 		   echo "Pipeline complete for branch: $PROJECT_NAME"
        				 }
+        			success {
+           				 echo "Pipeline succeeded!"
+     				 }
 			}
 }
