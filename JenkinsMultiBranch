@@ -7,24 +7,36 @@ pipeline {
            			 }
       		  }
         	stage('Build') {
+            		when {
+              		  branch 'developer'
+          		 }
           		  steps {
            		     echo "Building for developer branch..."
                 		// Add your build steps here
             		}
        		 }
       		stage('Test') {
+     		       when {
+      		          branch 'tester'
+    		        }
    		         steps {
         		        echo "Running tests on tester branch..."
     	          		  // Add your test steps here
          		   }
     		 }
      		 stage('Deploy to Staging') {
+           		when {
+            		    branch 'staging'
+         		}
           		  steps {
                 		echo "Deploying to staging environment..."
               				  // Add your deployment steps here
 		        	  }
      		  }
 		    stage('Production Deployment') {
+            		when {
+				branch 'production'
+            		}
           		  steps {
           			      echo "Deploying to production environment..."
             			    // Add your production deployment steps here
