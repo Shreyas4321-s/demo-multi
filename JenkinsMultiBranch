@@ -44,9 +44,6 @@ environment {
             		when {
 				branch 'production'
             		}
-				script {
-                   			 input message: "Proceed to Production?", ok: "Deploy"
-               			 }
           		  steps {
           			      echo "Deploying to production environment..."
             			    // Add your production deployment steps here
