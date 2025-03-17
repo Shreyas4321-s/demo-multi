@@ -38,9 +38,9 @@ environment {
           		  steps {
                 		echo "Deploying to staging environment..."
               				  // Add your deployment steps here
-				input {
-				  message 'Hi...there!!! wanna continue'
-				}
+				script {
+                   			 input message: "Proceed to Production?", ok: "Deploy"
+               			 }
 		        }
      		  }
 		    stage('Production Deployment') {
