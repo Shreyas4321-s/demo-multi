@@ -1,9 +1,16 @@
 pipeline {
    	 agent any
+options {
+  buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '2', numToKeepStr: '2')
+  quietPeriod 30
+}
+environment {
+  PROJECT_NAME = "demo-multi"
+}
         stages {
         	stage('Preparation') {
           		  steps {
-               			 echo "Starting pipeline for project"
+               			 echo "Starting pipeline for project: $PROJECT_NAME"
            			 }
       		  }
         	stage('Build') {
@@ -31,7 +38,10 @@ pipeline {
           		  steps {
                 		echo "Deploying to staging environment..."
               				  // Add your deployment steps here
-		        	  }
+				input {
+				  message 'Hi...there!!! wanna continue'
+				}
+		        }
      		  }
 		    stage('Production Deployment') {
             		when {
@@ -43,4 +53,9 @@ pipeline {
            		 }
       		  }
  	   }
+			post {
+       				always {
+        	 		   echo "Pipeline complete for branch: $PROJECT_NAME"
+       				 }
+			}
 }
