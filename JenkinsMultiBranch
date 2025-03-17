@@ -58,7 +58,7 @@ environment {
         	 		   echo "Pipeline complete for branch: $PROJECT_NAME"
        				 }
         			success {
-           			 echo "Pipeline deployed succeeded!"
+           			 echo "Multi-Branch Pipeline deployment succeeded!"
      				 }
 			}
 }
